@@ -86,6 +86,7 @@ sf::SoundBuffer * GameApplication::loadSoundFromFile(const string & path)
 GameApplication::GameState GameApplication::gameLoop()
 {
 	bool pause = false;
+	elapsedTimeAfterGameOver = 0.0f;
 
 	//
 	esc::ObjectLayer<Tetromino> tetrominoLayer;
@@ -113,7 +114,19 @@ GameApplication::GameState GameApplication::gameLoop()
 		if (tpf->getPeakLevel() < 2)
 		{
 			cout << "Game Over" << endl;
-			//soundDirector->playSound("gameover");
+			elapsedTimeAfterGameOver += elapsed;
+
+		// Problem: 
+		//     - This should be on class named Scenario (Inspired by Android's Activity/Cocos2dx- Scenes
+		//	   - We need to create a new scenario for end scenes
+		//     - Scenarios should be able to communicate to other scenarios or by returning results
+		//     - Scenarios will be either SinglePlayerScenario with TetrisPlayer class and
+		//		 MultiPlayerScenario with TetrisMultiPlayer class.
+		//
+
+		/*	if (elapsedTimeAfterGameOver >= 2.f)
+				soundDirector->playSound("gameover" , false);*/
+				
 			return GAMEOVER;
 		}
 
@@ -167,13 +180,12 @@ GameApplication::GameState GameApplication::gameLoop()
 				{
 					return EXITING;
 				}
-
 				mimic.project();
 			}
 		}
 
 		window.clear();
-
+		
 		if (tetromino->isLocked())
 		{
 			tpf->registerBlocks(tetromino);
@@ -198,7 +210,6 @@ GameApplication::GameState GameApplication::gameLoop()
 		}
 
 		tpf->drawGrid(&window);
-
 		dropper.update(elapsed);
 		tetrominoLayer.updateLayer(elapsed);
 		tetrominoLayer.drawLayer(&window);

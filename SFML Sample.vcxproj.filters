@@ -136,6 +136,9 @@
     <ClInclude Include="SoundDirector.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Escape\include\Scenario.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />
@@ -159,7 +162,6 @@
     <Text Include="To Do.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="asset\textures\" />
     <Image Include="asset\textures" />
     <Image Include="content\asset\textures\yellow_block.png" />
     <Image Include="content\asset\textures\sample.png" />

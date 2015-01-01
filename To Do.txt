@@ -3,10 +3,20 @@
 
 		Then(A MUST)
 		- Audio
-		- Design
-		- Multiplayer
-		- Playfield on Framework
-		- Renderer Context on Framework
-		- Fix randomizer
+			// Problem: 
+			//     - This should be on class named Scenario (Inspired by Android's Activity/Cocos2dx- Scenes
+			//	   - We need to create a new scenario for end scenes
+			//     - Scenarios should be able to communicate to other scenarios or by returning results
+			//     - Scenarios will be either SinglePlayerScenario with TetrisPlayer class and
+			//		 MultiPlayerScenario with TetrisMultiPlayer class.
+			//	   - Now audio can now play specific to only scene
+			//     - Scene will only end when the theatrics are over
+			//		 public bool onEndingScenario();
+			//     - Scenario class is an abstract class, thus TetrisMainScenario, TetrisMainMenu, TetrisEndGameScenario, etc.
 
+		- Mechanics Class
+		- Multiplayer
+		- Playfield on Framework (?)
+		- Renderer Context on Framework
+		- Design (Do placeholder first!)
 */

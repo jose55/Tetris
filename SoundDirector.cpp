@@ -10,8 +10,11 @@ SoundDirector::~SoundDirector()
 {
 }
 
-void SoundDirector::playSound(const string &sfxname)
+void SoundDirector::playSound(const string &sfxname , bool continuous)
 {
+	if (!continuous && !isDonePlaying(sfxname))
+		return;
+
 	if (sf::SoundBuffer * buffer = soundAssets->getResource(sfxname))
 	{
 		sound.setBuffer(*buffer);
@@ -22,4 +25,9 @@ void SoundDirector::playSound(const string &sfxname)
 void SoundDirector::setVolume(float vol)
 {
 	sound.setVolume(vol);
+}
+
+bool SoundDirector::isDonePlaying(const string & sfxname)
+{
+	return sound.getStatus() != sf::SoundSource::Status::Playing;
 }

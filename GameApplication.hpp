@@ -61,6 +61,8 @@ class GameApplication
 		unique_ptr<SoundDirector> soundDirector;
 
 		sf::Clock clock;
+
+		float elapsedTimeAfterGameOver;
 };
 
 #endif
