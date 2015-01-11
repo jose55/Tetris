@@ -42,7 +42,6 @@ class GameApplication
 	
 	private:
 
-		
 		GameState gameLoop();
 		bool loadGameAssets();
 

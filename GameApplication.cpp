@@ -85,6 +85,8 @@ sf::SoundBuffer * GameApplication::loadSoundFromFile(const string & path)
 
 GameApplication::GameState GameApplication::gameLoop()
 {
+	// GameScene logic
+
 	bool pause = false;
 	elapsedTimeAfterGameOver = 0.0f;
 
@@ -198,7 +200,8 @@ GameApplication::GameState GameApplication::gameLoop()
 		{
 			scorer.makeScore();
 			tpf->shiftClearedRows();
-
+			
+			// Refactor
 			if (tpf->getClearedRowsSize() == 1)
 				soundDirector->playSound("lineclear1");
 			else if (tpf->getClearedRowsSize() == 2)
